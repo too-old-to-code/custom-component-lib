@@ -82,12 +82,15 @@ export const theme = {
     hoverTextColor: "yellow",
     background: "linear-gradient(to left, #243B55, #141E30);",
   },
+  hamburger: {
+    position: "left", // left or right
+  },
   navbar: {
     textColor: "white",
     hoverTextColor: "yellow",
     // background: "#192a56",
     background: "grey",
-    hoverBackground: null,
+    hoverBackground: "brown",
     // background: "white",
     backgroundSelected: "#2dbeff",
     height: "55px",

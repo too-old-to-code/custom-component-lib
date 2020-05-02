@@ -1,14 +1,14 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const NavbarItem = styled.div.attrs((props) => ({
-  className: props.logo ? "app-logo" : "",
+export const NavbarItem = styled.div.attrs(({ logo }) => ({
+  className: logo ? "app-logo" : "",
 }))`
   height: 100%;
   align-items: center;
   padding: 0 20px;
-  display: flex ${(props) => (props.logo ? "!important" : "")};
+  display: flex ${({ logo }) => (logo ? "!important" : "")};
   align-items: center;
   justify-content: center;
   &:hover {
@@ -20,15 +20,15 @@ const NavbarItem = styled.div.attrs((props) => ({
   }
 `;
 
-export const NavbarItemOne = (props) => {
-  return (
-    <NavbarItem key={props.children} logo={props.logo} style={props.style}>
-      {props.children}
-    </NavbarItem>
-  );
-};
+// export const NavbarItemOne = (props) => {
+//   return (
+//     <NavbarItem key={props.children} logo={props.logo} style={props.style}>
+//       {props.children}
+//     </NavbarItem>
+//   );
+// };
 
-NavbarItemOne.propTypes = {
+NavbarItem.propTypes = {
   children: PropTypes.any,
   style: PropTypes.any,
   logo: PropTypes.bool,

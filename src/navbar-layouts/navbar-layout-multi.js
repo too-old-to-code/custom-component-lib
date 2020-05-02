@@ -1,27 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { BurgerMenu } from "../burger-menu/burger-menu";
 
 const RIGHT = "right";
 const LEFT = "left";
 const CENTER = "center";
 
-const NavbarInnerWrapper = styled.nav`
+const NavbarInnerWrapper = styled.div`
   height: 100%;
   display: flex;
   position: relative;
   @media (max-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
-    margin-left: 55px; // width of burger menu
+    ${({ logoPosition, theme }) =>
+      logoPosition !== CENTER && logoPosition === theme?.hamburger?.position
+        ? `margin-${logoPosition}: 55px;` // width of burger menu
+        : ""}
   }
 `;
 
 const Items = styled.div`
-  .app-logo & {
-    display: flex !important;
-  }
   height: 100%;
-  display: ${(props) => (props.alwaysShow ? "flex !important" : "flex")};
+  display: flex;
   align-items: center;
   ${(props) => {
     if (props.position === RIGHT) {
@@ -41,35 +40,54 @@ const Items = styled.div`
       `;
     }
   }}
-  // @media (max-width: ${({ theme }) => theme?.breakpoints?.maxMobile}) {
-  //   display: none;
-  // }
 `;
 
 function centerLogo(items, logo) {
   const midElement = Math.floor(items.length / 2);
-  return [items.slice(0, midElement), logo, items.slice(midElement)];
+  return (
+    <React.Fragment>
+      {items.slice(0, midElement)}
+      {logo}
+      {items.slice(midElement)}
+    </React.Fragment>
+  );
 }
 
-export const NavbarLayoutMulti = (props) => {
+export const NavbarLayoutMulti = ({
+  burgerMenu,
+  logoPosition,
+  logo,
+  itemsPosition,
+  children,
+  mobileMenu,
+}) => {
   return (
-    <NavbarInnerWrapper>
-      <BurgerMenu />
-      {props.itemsPosition === props.logoPosition ? (
-        <Items position={props.logoPosition}>
-          {props.logoPosition === LEFT
-            ? [props.logo, props.children]
-            : props.logoPosition === RIGHT
-            ? [props.children, props.logo]
-            : centerLogo(props.children, props.logo)}
+    <NavbarInnerWrapper logoPosition={logoPosition}>
+      {burgerMenu}
+      {mobileMenu}
+      {itemsPosition === logoPosition ? (
+        <Items position={logoPosition}>
+          {logoPosition === LEFT ? (
+            <React.Fragment>
+              {logo}
+              {children}
+            </React.Fragment>
+          ) : logoPosition === RIGHT ? (
+            <React.Fragment>
+              {children}
+              {logo}
+            </React.Fragment>
+          ) : (
+            centerLogo(children, logo)
+          )}
         </Items>
       ) : (
         <React.Fragment>
-          <Items alwaysShow key="logo" position={props.logoPosition}>
-            {props.logo}
+          <Items key="logo" position={logoPosition}>
+            {logo}
           </Items>
-          <Items key="items" position={props.itemsPosition}>
-            {props.children}
+          <Items key="items" position={itemsPosition}>
+            {children}
           </Items>
         </React.Fragment>
       )}
@@ -82,6 +100,8 @@ NavbarLayoutMulti.propTypes = {
   logo: PropTypes.any,
   itemsPosition: PropTypes.oneOf([RIGHT, CENTER, LEFT]),
   logoPosition: PropTypes.oneOf([RIGHT, CENTER, LEFT]),
+  burgerMenu: PropTypes.any,
+  mobileMenu: PropTypes.any,
 };
 
 NavbarLayoutMulti.defaultProps = {

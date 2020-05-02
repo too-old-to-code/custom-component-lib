@@ -11,7 +11,7 @@ const Menu = styled.button.attrs(({ isActive, burgerStyle }) => ({
 }))`
   z-index: 200 !important;
   position: fixed;
-  left: 0;
+  ${({ theme }) => `${theme?.hamburger?.position}: 0;` || "left: 0;"}
   min-height: ${({ theme }) => theme?.navbar?.height || "54px"};
   @media (min-width: ${({ theme }) => theme?.breakpoints?.minDesktop}) {
     display: none !important;
