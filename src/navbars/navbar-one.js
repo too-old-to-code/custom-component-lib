@@ -23,7 +23,7 @@ export const Navbar = (props) => {
     <Nav fixed={props.fixed} style={props.style}>
       <BurgerMenu
         fixed={props.fixed}
-        burgerStyle="spin"
+        burgerStyle={props.burgerMenuStyle}
         isActive={props.burgerMenuIsActive}
         toggleOpen={props.toggleMenu}
       />
@@ -36,6 +36,7 @@ Navbar.propTypes = {
   children: PropTypes.any,
   fixed: PropTypes.bool,
   burgerMenuIsActive: PropTypes.bool,
+  burgerMenuStyle: PropTypes.string,
   toggleMenu: PropTypes.any,
   style: PropTypes.any,
 };

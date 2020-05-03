@@ -78,9 +78,9 @@ export const theme = {
     `,
   },
   menu: {
-    textColor: "green",
-    hoverTextColor: "yellow",
-    background: "linear-gradient(to left, #243B55, #141E30);",
+    textColor: "white",
+    hoverTextColor: "#FF2B43",
+    background: "black",
   },
   hamburger: {
     position: "right", // left or right

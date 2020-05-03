@@ -8,6 +8,8 @@ import { NavbarItem } from "../../src/navbar-items/navbar-item-one";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../src/themes/theme-2";
 import { MobileMenu } from "../../src/mobile-menus/mobile-menu";
+import { MainArea } from "../../src/main-areas/main-area";
+import ParallaxImage from "../../src/components/parallax-image";
 
 import {
   disableBodyScroll,
@@ -74,7 +76,7 @@ export const ExampleTwo = () => {
         style={{
           fontFamily: "Open Sans",
         }}
-        burgerMenuStyle="spin"
+        burgerMenuStyle="collapse"
         burgerMenuIsActive={burgerMenuIsActive}
         toggleMenu={() => burgerMenuToggleActive(!burgerMenuIsActive)}
       >
@@ -111,40 +113,46 @@ export const ExampleTwo = () => {
           </NavbarItem>
         </NavbarLayoutMulti>
       </Navbar>
-      <div
-        style={{
-          // position: "fixed",
-          top: "55px",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          overflow: "auto",
-        }}
-      >
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
+      <ParallaxImage height="90vh" />
+      <div>
+        <h2>We are proud to be specialists.</h2>
+        <p>
+          Being 100% focused in Communications and Marketing, Addison has the
+          depth of industry knowledge and relationships to deliver the very best
+          talent to your organisation. We are undistracted by any other
+          discipline and have proven delivery and subject matter expertise
+          delivering across these essential customer functions.
+        </p>
       </div>
+      <ParallaxImage height="500px" />
+      <ParallaxImage height="30vh" />
+      <ParallaxImage height="30vh" />
+
+      <MainArea>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+      </MainArea>
     </ThemeProvider>
   );
 };

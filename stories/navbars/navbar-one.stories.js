@@ -9,12 +9,15 @@ import { NavbarItem } from "../../src/navbar-items/navbar-item-one";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../src/themes/theme-1";
 import { MobileMenu } from "../../src/mobile-menus/mobile-menu";
-
+import ParallaxImage from "../../src/components/parallax-image";
+import { Diagonal } from "../../src/components/diagonal";
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
+import { SixPack } from "../../src/components/six-pack";
+
 export default {
   title: "Navbars",
 };
@@ -104,31 +107,46 @@ export const ExampleOne = () => {
           </NavbarItem>
         </NavbarLayoutMulti>
       </Navbar>
-      <MainArea fixed>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-      </MainArea>
+      <ParallaxImage
+        height="90vh"
+        staticContent={
+          <Diagonal skew="-15">
+            <h1>hello</h1>
+            <h1>hello</h1>
+          </Diagonal>
+        }
+      />
+      <SixPack
+        one={<div style={{ background: "yellow", height: "100px" }}>One</div>}
+        two={<div>Two</div>}
+        three={<div>Three</div>}
+        four={<div>Four</div>}
+        five={<div>Five</div>}
+        six={<div>Six</div>}
+      />
+      <div>
+        <h2>We are proud to be specialists.</h2>
+        <p>
+          Being 100% focused in Communications and Marketing, Addison has the
+          depth of industry knowledge and relationships to deliver the very best
+          talent to your organisation. We are undistracted by any other
+          discipline and have proven delivery and subject matter expertise
+          delivering across these essential customer functions.
+        </p>
+      </div>
+      <ParallaxImage height="90vh" />
+      <div>
+        <h2>We are proud to be specialists.</h2>
+        <p>
+          Being 100% focused in Communications and Marketing, Addison has the
+          depth of industry knowledge and relationships to deliver the very best
+          talent to your organisation. We are undistracted by any other
+          discipline and have proven delivery and subject matter expertise
+          delivering across these essential customer functions.
+        </p>
+      </div>
+      <ParallaxImage height="90vh" />
+      <MainArea fixed></MainArea>
     </ThemeProvider>
   );
 };
