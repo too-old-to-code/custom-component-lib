@@ -17,12 +17,13 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            plugins: ["@babel/plugin-proposal-optional-chaining"],
             presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.s?[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
@@ -36,7 +37,7 @@ module.exports = {
   },
   plugins: [
     // new FaviconsWebpackPlugin('./static/logo.png'),
-    "@babel/plugin-proposal-optional-chaining",
+    // "@babel/plugin-proposal-optional-chaining",
     new CleanWebpackPlugin(),
   ],
   devServer: {
