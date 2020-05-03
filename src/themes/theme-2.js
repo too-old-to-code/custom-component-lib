@@ -17,8 +17,8 @@ const DARKISH = "#353b48";
 
 export const theme = {
   breakpoints: {
-    maxMobile: "767px",
-    minDesktop: "768px",
+    maxMobile: "999px",
+    minDesktop: "1000px",
   },
   colors: {
     default: DEFAULT,
@@ -83,19 +83,17 @@ export const theme = {
     background: "linear-gradient(to left, #243B55, #141E30);",
   },
   hamburger: {
-    position: "left", // left or right
-    color: "#EC1E69",
-    background: null,
+    position: "right", // left or right
   },
   navbar: {
-    textColor: "black",
-    hoverTextColor: "#EC1E69",
+    textColor: "white",
+    hoverTextColor: "#FF2B43",
     // background: "#192a56",
-    background: "white",
-    hoverBackground: null,
+    background: "black",
+    // hoverBackground: "brown",
     // background: "white",
     backgroundSelected: "#2dbeff",
-    height: "80px",
+    height: "65px",
   },
   sidebar: {
     background: "#273c75",

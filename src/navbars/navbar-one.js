@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { BurgerMenu } from "../burger-menus/burger-menu";
 
 const Nav = styled.nav`
   z-index: 75;
@@ -17,10 +18,24 @@ const Nav = styled.nav`
 // justify-content: ${(props) => (props.center ? "center" : "space-between")};
 
 export const Navbar = (props) => {
-  return <Nav fixed={props.fixed}>{props.children}</Nav>;
+  console.log(props);
+  return (
+    <Nav fixed={props.fixed} style={props.style}>
+      <BurgerMenu
+        fixed={props.fixed}
+        burgerStyle="spin"
+        isActive={props.burgerMenuIsActive}
+        toggleOpen={props.toggleMenu}
+      />
+      {props.children}
+    </Nav>
+  );
 };
 
 Navbar.propTypes = {
   children: PropTypes.any,
   fixed: PropTypes.bool,
+  burgerMenuIsActive: PropTypes.bool,
+  toggleMenu: PropTypes.any,
+  style: PropTypes.any,
 };

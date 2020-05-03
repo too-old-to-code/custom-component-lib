@@ -10,11 +10,18 @@ const Menu = styled.button.attrs(({ isActive, burgerStyle }) => ({
   type: "button",
 }))`
   z-index: 200 !important;
-  position: fixed;
+  position: ${(props) => (props.fixed ? "fixed" : "absolute")};
   ${({ theme }) => `${theme?.hamburger?.position}: 0;` || "left: 0;"}
   min-height: ${({ theme }) => theme?.navbar?.height || "54px"};
+  // background-color: black;
+  background-color: ${({ theme }) =>
+    theme?.hamburger?.background || "transparent"};
   @media (min-width: ${({ theme }) => theme?.breakpoints?.minDesktop}) {
     display: none !important;
+  }
+  & .hamburger-inner, .hamburger-inner:before, .hamburger-inner:after  {
+    background-color: ${({ theme }) =>
+      theme?.hamburger?.color || "white"} !important;
   }
 `;
 
@@ -36,4 +43,5 @@ BurgerMenu.propTypes = {
   toggleOpen: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
   burgerStyle: PropTypes.string,
+  fixed: PropTypes.bool,
 };

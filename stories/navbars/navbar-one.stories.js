@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import logo from "../../static/placeholder-logo.png";
 
 import { Navbar } from "../../src/navbars/navbar-one";
+import { MainArea } from "../../src/main-areas/main-area";
 import { NavbarLayoutMulti } from "../../src/navbar-layouts/navbar-layout-multi";
 import { NavbarItem } from "../../src/navbar-items/navbar-item-one";
-import { BurgerMenu } from "../../src/burger-menus/burger-menu";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../src/themes/theme-1";
 import { MobileMenu } from "../../src/mobile-menus/mobile-menu";
+
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 export default {
   title: "Navbars",
 };
@@ -38,20 +44,46 @@ MobileMenuWithContent.propTypes = {
 
 export const ExampleOne = () => {
   const [burgerMenuIsActive, burgerMenuToggleActive] = useState(false);
+  const openMenu = useRef();
+
+  // Close the mobile menu if the screen is resized while the menu is open
+  useEffect(() => {
+    const handleResize = () => burgerMenuToggleActive(false);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  // ensure the main screen can't be scrolled when the menu is open
+  useEffect(() => {
+    let targetElement = openMenu;
+    if (burgerMenuIsActive) {
+      disableBodyScroll(targetElement);
+    } else {
+      enableBodyScroll(targetElement);
+    }
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, [burgerMenuIsActive]);
+
   return (
     <ThemeProvider theme={theme}>
-      <Navbar fixed>
+      <Navbar
+        fixed
+        style={{
+          boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.125)",
+          letterSpacing: "1px",
+        }}
+        burgerMenuStyle="spin"
+        burgerMenuIsActive={burgerMenuIsActive}
+        toggleMenu={() => burgerMenuToggleActive(!burgerMenuIsActive)}
+      >
         <NavbarLayoutMulti
-          itemsPosition="left"
+          itemsPosition="right"
           logoPosition="left"
           mobileMenu={<MobileMenuWithContent isOpen={burgerMenuIsActive} />}
-          burgerMenu={
-            <BurgerMenu
-              burgerStyle="spin"
-              isActive={burgerMenuIsActive}
-              toggleOpen={() => burgerMenuToggleActive(!burgerMenuIsActive)}
-            />
-          }
           logo={
             <NavbarItem logo>
               <img style={{ height: "40%" }} src={logo} />
@@ -72,6 +104,31 @@ export const ExampleOne = () => {
           </NavbarItem>
         </NavbarLayoutMulti>
       </Navbar>
+      <MainArea fixed>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+      </MainArea>
     </ThemeProvider>
   );
 };
