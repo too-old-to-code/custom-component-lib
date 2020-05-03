@@ -96,7 +96,7 @@ const ParallaxStyled = styled.div`
 //   </div>
 // </Diagonal>
 
-const ParallaxImage = (props) => (
+export const ParallaxImage = (props) => (
   <ParallaxStyled>
     {props.staticContent}
     <Controller>
@@ -122,4 +122,3 @@ ParallaxImage.propTypes = {
   staticContent: PropTypes.any,
 };
 
-export default ParallaxImage;
