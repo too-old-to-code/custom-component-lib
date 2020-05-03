@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Controller, Scene } from "react-scrollmagic";
 import { Tween, Timeline } from "react-gsap";
 
-export const ParallaxStyled = styled.div`
+const ParallaxStyled = styled.div`
   .section {
     padding: 20px;
     color: aliceblue;
@@ -49,7 +49,7 @@ export const ParallaxStyled = styled.div`
   }
 `;
 
-const Parallax = () => (
+export const Parallax = () => (
   <ParallaxStyled>
     <Controller>
       <Scene duration="300%" triggerHook="onEnter">
